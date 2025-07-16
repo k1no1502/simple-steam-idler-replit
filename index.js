@@ -18,6 +18,17 @@ user.on('loggedOn', () => {
 	user.gamesPlayed(games);
 });
 
+const express = require("express");
+const app = express();
+const PORT = process.env.PORT || 3000;
+
+app.get("/", (req, res) => {
+  res.send("Steam idler bot is running!");
+});
+
+app.listen(PORT, () => {
+  console.log(`Web server listening on port ${PORT}`);
+});
 
 // var username2 = process.env.username2;
 // var password2 = process.env.password2;

@@ -1,6 +1,19 @@
 const steamUser = require('steam-user');
 const steamTotp = require('steam-totp');
 const keep_alive = require('./keep_alive.js')
+const SteamUser = require('steam-user');
+const SteamTotp = require('steam-totp');
+
+const client = new SteamUser();
+
+const logOnOptions = {
+  accountName: process.env.ACCOUNT_USERNAME,
+  password: process.env.ACCOUNT_PASSWORD,
+  twoFactorCode: SteamTotp.generateAuthCode(process.env.SHARED_SECRET)
+};
+
+client.logOn(logOnOptions);
+
 
 var username = process.env.username;
 var password = process.env.password;
